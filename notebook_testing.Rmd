@@ -1,0 +1,64 @@
+---
+title: "Testing"
+output: html_notebook
+---
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code.
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Ctrl+Shift+Enter*.
+
+```{r}
+print(fuzzy_matches_spring_2021)
+```
+
+```{r}
+write.csv(string_dist_testing_fall_2020,"D:\\Rstudio projects\\tidy_string_distance\\string_dist_testing_fall_2020_q10.csv")
+write.csv(string_dist_testing_spring_2021,"D:\\Rstudio projects\\tidy_string_distance\\string_dist_testing_spring_2021_q10.csv")
+```
+
+```{r}
+
+
+string_dist_testing_spring_2021 <- data.frame(fuzzy_matches_spring_2021$`Search It Result`,fuzzy_matches_spring_2021$`Citation Source Title`,fuzzy_matches_spring_2021$Similarity,stringdist(tolower(fuzzy_matches_spring_2021$`Search It Result`),tolower(fuzzy_matches_spring_2021$`Citation Source Title`), method = "jw"),stringdist(tolower(fuzzy_matches_spring_2021$`Search It Result`),tolower(fuzzy_matches_spring_2021$`Citation Source Title`), method = "jaccard", q = "10" ),stringdist(tolower(fuzzy_matches_spring_2021$`Search It Result`),tolower(fuzzy_matches_spring_2021$`Citation Source Title`), method = "lv"))
+colnames(string_dist_testing_spring_2021) <- c("Search It Title","Citation Title","Fuzzy Match Score","JW Score", "Jaccard Score", "LV Score")
+  print(string_dist_testing_spring_2021)
+ 
+  string_dist_testing_fall_2020 <- data.frame(fuzzy_matches_fall_2020$`Search It Result`,fuzzy_matches_fall_2020$`Citation Source Title`,fuzzy_matches_fall_2020$Similarity,stringdist(tolower(fuzzy_matches_fall_2020$`Search It Result`),tolower(fuzzy_matches_fall_2020$`Citation Source Title`), method = "jw"),stringdist(tolower(fuzzy_matches_fall_2020$`Search It Result`),tolower(fuzzy_matches_fall_2020$`Citation Source Title`), method = "jaccard", q = "10"),stringdist(tolower(fuzzy_matches_fall_2020$`Search It Result`),tolower(fuzzy_matches_fall_2020$`Citation Source Title`), method = "lv"))
+  colnames(string_dist_testing_fall_2020) <- c("Search It Title","Citation Title","Fuzzy Match Score","JW Score", "Jaccard Score", "LV Score")
+  print(string_dist_testing_fall_2020) 
+  
+
+
+```
+
+```{r}
+i <- 1
+while(i != 2){print(fall_2020_paper_citations_seeded_with_wins$source_title)
+  
+  string_dist_testing <- data.frame(fall_2020_paper_citations_seeded_with_wins$paper_title,paper_titles_testing$Title,fall_2020_paper_citations_seeded_with_wins$source_title,stringdist(tolower(fall_2020_paper_citations_seeded_with_wins$source_title),tolower(paper_titles_testing$Title), method = "jw"))
+  print(string_dist_testing)
+  i <- fall_2020_paper_citations_seeded_with_wins$source_title}
+  
+```
+
+When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Ctrl+Shift+K* to preview the HTML file).
+
+The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
+
+```{r}
+A = matrix(c(2,4,3,1,5,7), nrow=2, ncol=3, byrow = TRUE)
+A
+```
+
+```{r}
+final_testing.tb <-tibble(Searchit_title = character(),s_type = character(),paper_title = character(), paper_type = character(), Jaccard = double())
+final_testing.tb <- c(final_testing.tb,title_bib_testing_matrix[1,4],title_bib_testing_matrix[1,5],Spring2021_oneObsPerRow_matrix[1,3],Spring2021_oneObsPerRow_matrix[1,4],stringdist(title_bib_testing_matrix[1,4],Spring2021_oneObsPerRow_matrix[1,3], method = "jaccard"))
+print(final_testing.tb)
+for(i in 1:5){
+
+final_testing.tb <- tibble(final_testing.tb,title_bib_testing_matrix[i,4],title_bib_testing_matrix[i,5],Spring2021_oneObsPerRow_matrix[i,3],Spring2021_oneObsPerRow_matrix[i,4],stringdist(title_bib_testing_matrix[i,4],Spring2021_oneObsPerRow_matrix[i,3], method = "jaccard"))}
+
+print(final_testing)
+
+```
+

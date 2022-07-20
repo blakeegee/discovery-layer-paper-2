@@ -46,10 +46,54 @@ When you save the notebook, an HTML file containing the code and output will be 
 The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
 
 ```{r}
-A = matrix(c(2,4,3,1,5,7), nrow=2, ncol=3, byrow = TRUE)
-A
-```
+searchit_titles=read.csv("D:/Rstudio projects/tidy_string_distance/one_paper_query_results_test.csv")
+matrixsearchit_titles=as.matrix(searchit_titles)
+vectorsearchit_titles=as.vector(searchit_titles)
 
+papers_info_test=read.csv("D:/Rstudio projects/tidy_string_distance/papers_info_test.csv")
+matrixpapers_info_test=as.matrix(papers_info_test)
+vectorpapers_info_test=as.vector(papers_info_test)
+
+```
+```{r}
+
+n <- 1
+i <- 1
+b <- 1
+jaccard <- data.frame(matrix(ncol = 3, nrow = 0))
+colnames(jaccard) <- c("Citation Title","Search It Title","Jaccard Score")
+while (n < 11) {
+
+while (b < 51) {
+  new_row <-  c(matrixpapers_info_test[i,4],matrixsearchit_titles[b,3],stringdist(tolower(matrixpapers_info_test[i,4]),tolower(matrixsearchit_titles[b,3]), method = "jaccard"))
+  b = b + 1
+  jaccard[nrow(jaccard) + 1,] <- new_row
+ }
+  i = i +1
+  n <- i
+  b <- 1
+  
+  
+}
+
+  print(jaccard)
+```
+```{r}
+  print(matrixsearchit_titles[b,3])
+  print(matrixpapers_info_test[i,4])
+jaccard <- stringdist(tolower(matrixpapers_info_test[i,4]),tolower(matrixsearchit_titles[b,3]), method = "jaccard")
+  print(jaccard)
+  string_dist_testing_fall_2020 <- data.frame(fuzzy_matches_fall_2020$`Search It Result`,fuzzy_matches_fall_2020$`Citation Source Title`,fuzzy_matches_fall_2020$Similarity,stringdist(tolower(fuzzy_matches_fall_2020$`Search It Result`),tolower(fuzzy_matches_fall_2020$`Citation Source Title`), method = "jw"),stringdist(tolower(fuzzy_matches_fall_2020$`Search It Result`),tolower(fuzzy_matches_fall_2020$`Citation Source Title`), method = "jaccard", q = "10"),stringdist(tolower(fuzzy_matches_fall_2020$`Search It Result`),tolower(fuzzy_matches_fall_2020$`Citation Source Title`), method = "lv"))
+  
+  
+  colnames(string_dist_testing_fall_2020) <- c("Search It Title","Citation Title","Fuzzy Match Score","JW Score", "Jaccard Score", "LV Score")
+  print(string_dist_testing_fall_2020) 
+  
+  
+  
+
+
+```
 ```{r}
 final_testing.tb <-tibble(Searchit_title = character(),s_type = character(),paper_title = character(), paper_type = character(), Jaccard = double())
 final_testing.tb <- c(final_testing.tb,title_bib_testing_matrix[1,4],title_bib_testing_matrix[1,5],Spring2021_oneObsPerRow_matrix[1,3],Spring2021_oneObsPerRow_matrix[1,4],stringdist(title_bib_testing_matrix[1,4],Spring2021_oneObsPerRow_matrix[1,3], method = "jaccard"))

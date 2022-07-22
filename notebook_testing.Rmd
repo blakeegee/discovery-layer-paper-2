@@ -46,13 +46,13 @@ When you save the notebook, an HTML file containing the code and output will be 
 The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
 
 ```{r}
-searchit_titles=read.csv("D:/Rstudio projects/tidy_string_distance/one_paper_query_results_test.csv")
+searchit_titles=read.csv("D:/Rstudio projects/tidy_string_distance/paperTitles_inSearchItYes_Fall2020_oneObsPerRow.csv")
 matrixsearchit_titles=as.matrix(searchit_titles)
 vectorsearchit_titles=as.vector(searchit_titles)
 
-papers_info_test=read.csv("D:/Rstudio projects/tidy_string_distance/papers_info_test.csv")
-matrixpapers_info_test=as.matrix(papers_info_test)
-vectorpapers_info_test=as.vector(papers_info_test)
+source_titles=read.csv("D:/Rstudio projects/tidy_string_distance/fall_2020_paper_citations_01.csv")
+matrix_source_title=as.matrix(source_titles)
+vectorpapers_info_test=as.vector(source_titles)
 
 ```
 ```{r}
@@ -61,11 +61,12 @@ n <- 1
 i <- 1
 b <- 1
 jaccard <- data.frame(matrix(ncol = 3, nrow = 0))
-colnames(jaccard) <- c("Citation Title","Search It Title","Jaccard Score")
-while (n < 11) {
-
-while (b < 51) {
-  new_row <-  c(matrixpapers_info_test[i,4],matrixsearchit_titles[b,3],stringdist(tolower(matrixpapers_info_test[i,4]),tolower(matrixsearchit_titles[b,3]), method = "jaccard"))
+colnames(jaccard) <- c("Source Title","Search It Title","Jaccard Score")
+while (n < 100  ) {
+#n should be the number of source citations to check (citations from papers)
+#b should be the whole number of titles returned from queries to check  (titles returned from discovery layer to compare against.)
+while (b < 4275) {
+  new_row <-  c(matrix_source_title[i,4],matrixsearchit_titles[b,3],stringdist(tolower(matrix_source_title[i,4]),tolower(matrixsearchit_titles[b,3]), method = "jaccard", nthread = getOption("10")))
   b = b + 1
   jaccard[nrow(jaccard) + 1,] <- new_row
  }
@@ -75,7 +76,8 @@ while (b < 51) {
   
   
 }
-
+```
+```{r}
   print(jaccard)
 ```
 ```{r}

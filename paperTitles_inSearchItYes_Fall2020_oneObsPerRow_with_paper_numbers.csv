@@ -1,4 +1,4 @@
-﻿Paper #,Query,Results,Title,Type,CreateDate
+﻿Paper_number,Query,Results,Title,Type,CreateDate
 1,"Taiwan: China’s Next Target, A History of Oppression",1455,Governing Indigenous Drinking: Jiejiu in Settler-Colonial Taiwan,article,2019
 1,"Taiwan: China’s Next Target, A History of Oppression",1455,Transitional Justice and Collective Memory in Taiwan: How Taiwanese Society is Coming to Terms with Its Authoritarian Past,article,2017
 1,"Taiwan: China’s Next Target, A History of Oppression",1455,From bargaining to alliance with patriarchy: The role of Taiwanese husbands in marriage migrants' civic organisations in Taiwan,article,2020
@@ -3269,56 +3269,56 @@
 175,Virulent Pandemics,21550,Epitope-based approaches to a universal influenza vaccine,article,2014
 175,Virulent Pandemics,21550,The Influenza Pandemic of 2009: Lessons and Implications,article,2012
 175,Virulent Pandemics,21550,Prevalence and molecular characterization of extended-spectrum ??-lactamase (ESBL) and plasmidic AmpC ??-lactamase (pAmpC) producing Escherichia coli in dogs,article,2017
-175,Poland: A Falling Democracy,13182,"Populism and Liberal Democracy: Populists in Government in Austria, Italy, Poland and Switzerland",article,2013
-175,Poland: A Falling Democracy,13182,Poland : a country study,pbook,1994
-175,Poland: A Falling Democracy,13182,Unions for whom? Union democracy and precarious workers in Poland and Italy,article,2019
-175,Poland: A Falling Democracy,13182,Democracy after ‘the end of history’: Vietnamese diasporic liberalism in Poland,article,2021
-175,Poland: A Falling Democracy,13182,"Rethinking ""democratic backsliding"" in Central and Eastern Europe - looking beyond Hungary and Poland",article,2018
-175,Poland: A Falling Democracy,13182,"Surveillance, Legal Restraints and Dismantling Democracy: Lessons from Poland",article,2021
-175,Poland: A Falling Democracy,13182,The State of Democracy in Poland after 2007: Analyzing the Linkage between Economic Development and Political Participation,article,2016
-175,Poland: A Falling Democracy,13182,Democratic Backsliding in Poland and Hungary,article,2021
-175,Poland: A Falling Democracy,13182,"Connecting Reproductive Rights, Democracy, and the Rule of Law: Lessons from Poland in Times of COVID-19",article,2021
-175,Poland: A Falling Democracy,13182,"Between Private Property, Authoritarian State and Democracy: Clearing Trees in Cities and Destroying the Bia??owie??a Forest in Poland",article,2021
-175,Poland: A Falling Democracy,13182,"Political Process, Crisis and Legitimacy in Poland",article,2020
-175,Poland: A Falling Democracy,13182,"Governing new authoritarianism: Populism, nationalism and radical welfare reforms in Hungary and Poland",article,2021
-175,Poland: A Falling Democracy,13182,Understanding drivers of illiberal entrenchment at critical junctures: institutional responses to COVID-19 in Hungary and Poland,article,2021
-175,Poland: A Falling Democracy,13182,Economics and politics of post-communist transition to market and democracy. The lessons from Polish experience,article,2020
-175,Poland: A Falling Democracy,13182,The People vs. Democracy: Why Our Freedom Is in Danger and How to Save It,book,2018
-175,Poland: A Falling Democracy,13182,Reception of Political Parties by Robert Michels in Poland in an international context,article,2021
-175,Poland: A Falling Democracy,13182,What Bears Witness of the Failed Revolution?: The Rise of Political Antisemitism during the 1905–1907 Revolution in the Kingdom of Poland,article,2016
-175,Poland: A Falling Democracy,13182,"THE ""DEBATE "" ABOUT POLAND THE REPRESENTATION OF POLAND AND THE EU IN THE EUROPEAN PARLIAMENTARY DEBATE ON 15/11/171",article,2019
-175,Poland: A Falling Democracy,13182,From poster boys to black sheep: Authoritarian neoliberalism in Hungary and Poland,article,2020
-175,Poland: A Falling Democracy,13182,How to Kill a Democracy,article,2019
-175,Poland: A Falling Democracy,13182,"Three roads to institutionalisation: Vote-, office- and policy-seeking explanations of party switching in Poland",article,2011
-175,Poland: A Falling Democracy,13182,Trust and Emerging Democracy: Lessons from Poland,article,1996
-175,Poland: A Falling Democracy,13182,"Hate Speech and Constitutional Democracy in Eastern Europe: Transitional and Militant? (Czech Republic, Hungary and Poland)",article,2014
-175,Poland: A Falling Democracy,13182,Constructive emotions? Patriotism as a predictor of civic activity in Poland,article,2020
-175,Poland: A Falling Democracy,13182,Political Trust vs. Turnout in Modern Democracies,article,2020
-175,Poland: A Falling Democracy,13182,Solidarity: the great workers strike of 1980,book,2012
-175,Poland: A Falling Democracy,13182,Under one common banner: antisemitism and socialist strategy during the 1905-7 Revolution in the Kingdom of Poland,article,2017
-175,Poland: A Falling Democracy,13182,Five Rising Democracies: And the Fate of the International Liberal Order,book,2016
-175,Poland: A Falling Democracy,13182,POPULISM AND PROTEST IN POLAND,article,2016
-175,Poland: A Falling Democracy,13182,Complaints and Their Researchers: The Evolution of Sociodicy in Poland in the Period of 1949–1988,article,2014
-175,Poland: A Falling Democracy,13182,Civil–military relations in post-communist Poland; problems in the transition to a democratic polity,article,2000
-175,Poland: A Falling Democracy,13182,Militant memocracy in International Relations: Mnemonical status anxiety and memory laws in Eastern Europe,article,2021
-175,Poland: A Falling Democracy,13182,The Purest Democrat: Fetal Citizenship and Subjectivity in the Construction of Democracy in Poland,article,2004
-175,Poland: A Falling Democracy,13182,"Media Use and Political Engagement in Three New Democracies: Malaise versus Mobilization in the Czech Republic, Hungary, and Poland",article,2012
-175,Poland: A Falling Democracy,13182,The Illiberal Turn or Swerve in Central Europe?,article,2017
-175,Poland: A Falling Democracy,13182,The fate of labor after regime change: Lessons from post-communist Poland and post-apartheid South Africa for Tunisia’s Nobel-Prize winning unions,article,2019
-175,Poland: A Falling Democracy,13182,A New Dimension of Social Stratification in Poland? Class Membership and Electoral Voting in 1991–2001,article,2008
-175,Poland: A Falling Democracy,13182,Polish Democracy in Transition?,article,2005
-175,Poland: A Falling Democracy,13182,The ‘drifting Generation’ without a Helmsman. Main obstacles in shaping the Relations between the Political Parties and the Youth in Poland,article,2015
-175,Poland: A Falling Democracy,13182,Does Generalized (Dis)Trust Travel? Examining the Impact of Cultural Heritage and Destination-Country Environment on Trust of Immigrants,article,2012
-175,Poland: A Falling Democracy,13182,Managing the Energy Transition through Discourse. The Case of Poland,article,2021
-175,Poland: A Falling Democracy,13182,"The Polish Parliament and the Making of Politics through Abortion: Nation, Gender and Democracy in the 1996 Liberalization Amendment Debate",article,2009
-175,Poland: A Falling Democracy,13182,"Inequality, Political Participation, and Democratic Deepening in Poland",article,2005
-175,Poland: A Falling Democracy,13182,The ends of revolution: capitalist de-democratization and nationalist populism in the east of Europe,article,2017
-175,Poland: A Falling Democracy,13182,Conclusion: Party Democracy in Poland and Its Future,book_chapter,2021
-175,Poland: A Falling Democracy,13182,Democracy in Poland: The Post-communist Regime and Its Performance,book_chapter,2021
-175,Poland: A Falling Democracy,13182,"Are the European Union's New Boundaries like the Iron Curtain? 1989, Borders and Freedom of Movement in Poland and Ukraine",article,2009
-175,Poland: A Falling Democracy,13182,"Conversations with a Polish populist: Tracing hidden histories of globalization, class, and dispossession in postsocialism (and beyond)",article,2009
-175,Poland: A Falling Democracy,13182,Digital divide among people with disabilities: Analysis of data from a nationwide study for determinants of Internet use and activities performed online,article,2017
-175,Poland: A Falling Democracy,13182,"Between Apprehension and Support: Social Dialogue, Democracy, and Industrial Restructuring in Central and Eastern Europe",article,2010
+177,Poland: A Falling Democracy,13182,"Populism and Liberal Democracy: Populists in Government in Austria, Italy, Poland and Switzerland",article,2013
+177,Poland: A Falling Democracy,13182,Poland : a country study,pbook,1994
+177,Poland: A Falling Democracy,13182,Unions for whom? Union democracy and precarious workers in Poland and Italy,article,2019
+177,Poland: A Falling Democracy,13182,Democracy after ‘the end of history’: Vietnamese diasporic liberalism in Poland,article,2021
+177,Poland: A Falling Democracy,13182,"Rethinking ""democratic backsliding"" in Central and Eastern Europe - looking beyond Hungary and Poland",article,2018
+177,Poland: A Falling Democracy,13182,"Surveillance, Legal Restraints and Dismantling Democracy: Lessons from Poland",article,2021
+177,Poland: A Falling Democracy,13182,The State of Democracy in Poland after 2007: Analyzing the Linkage between Economic Development and Political Participation,article,2016
+177,Poland: A Falling Democracy,13182,Democratic Backsliding in Poland and Hungary,article,2021
+177,Poland: A Falling Democracy,13182,"Connecting Reproductive Rights, Democracy, and the Rule of Law: Lessons from Poland in Times of COVID-19",article,2021
+177,Poland: A Falling Democracy,13182,"Between Private Property, Authoritarian State and Democracy: Clearing Trees in Cities and Destroying the Bia??owie??a Forest in Poland",article,2021
+177,Poland: A Falling Democracy,13182,"Political Process, Crisis and Legitimacy in Poland",article,2020
+177,Poland: A Falling Democracy,13182,"Governing new authoritarianism: Populism, nationalism and radical welfare reforms in Hungary and Poland",article,2021
+177,Poland: A Falling Democracy,13182,Understanding drivers of illiberal entrenchment at critical junctures: institutional responses to COVID-19 in Hungary and Poland,article,2021
+177,Poland: A Falling Democracy,13182,Economics and politics of post-communist transition to market and democracy. The lessons from Polish experience,article,2020
+177,Poland: A Falling Democracy,13182,The People vs. Democracy: Why Our Freedom Is in Danger and How to Save It,book,2018
+177,Poland: A Falling Democracy,13182,Reception of Political Parties by Robert Michels in Poland in an international context,article,2021
+177,Poland: A Falling Democracy,13182,What Bears Witness of the Failed Revolution?: The Rise of Political Antisemitism during the 1905–1907 Revolution in the Kingdom of Poland,article,2016
+177,Poland: A Falling Democracy,13182,"THE ""DEBATE "" ABOUT POLAND THE REPRESENTATION OF POLAND AND THE EU IN THE EUROPEAN PARLIAMENTARY DEBATE ON 15/11/171",article,2019
+177,Poland: A Falling Democracy,13182,From poster boys to black sheep: Authoritarian neoliberalism in Hungary and Poland,article,2020
+177,Poland: A Falling Democracy,13182,How to Kill a Democracy,article,2019
+177,Poland: A Falling Democracy,13182,"Three roads to institutionalisation: Vote-, office- and policy-seeking explanations of party switching in Poland",article,2011
+177,Poland: A Falling Democracy,13182,Trust and Emerging Democracy: Lessons from Poland,article,1996
+177,Poland: A Falling Democracy,13182,"Hate Speech and Constitutional Democracy in Eastern Europe: Transitional and Militant? (Czech Republic, Hungary and Poland)",article,2014
+177,Poland: A Falling Democracy,13182,Constructive emotions? Patriotism as a predictor of civic activity in Poland,article,2020
+177,Poland: A Falling Democracy,13182,Political Trust vs. Turnout in Modern Democracies,article,2020
+177,Poland: A Falling Democracy,13182,Solidarity: the great workers strike of 1980,book,2012
+177,Poland: A Falling Democracy,13182,Under one common banner: antisemitism and socialist strategy during the 1905-7 Revolution in the Kingdom of Poland,article,2017
+177,Poland: A Falling Democracy,13182,Five Rising Democracies: And the Fate of the International Liberal Order,book,2016
+177,Poland: A Falling Democracy,13182,POPULISM AND PROTEST IN POLAND,article,2016
+177,Poland: A Falling Democracy,13182,Complaints and Their Researchers: The Evolution of Sociodicy in Poland in the Period of 1949–1988,article,2014
+177,Poland: A Falling Democracy,13182,Civil–military relations in post-communist Poland; problems in the transition to a democratic polity,article,2000
+177,Poland: A Falling Democracy,13182,Militant memocracy in International Relations: Mnemonical status anxiety and memory laws in Eastern Europe,article,2021
+177,Poland: A Falling Democracy,13182,The Purest Democrat: Fetal Citizenship and Subjectivity in the Construction of Democracy in Poland,article,2004
+177,Poland: A Falling Democracy,13182,"Media Use and Political Engagement in Three New Democracies: Malaise versus Mobilization in the Czech Republic, Hungary, and Poland",article,2012
+177,Poland: A Falling Democracy,13182,The Illiberal Turn or Swerve in Central Europe?,article,2017
+177,Poland: A Falling Democracy,13182,The fate of labor after regime change: Lessons from post-communist Poland and post-apartheid South Africa for Tunisia’s Nobel-Prize winning unions,article,2019
+177,Poland: A Falling Democracy,13182,A New Dimension of Social Stratification in Poland? Class Membership and Electoral Voting in 1991–2001,article,2008
+177,Poland: A Falling Democracy,13182,Polish Democracy in Transition?,article,2005
+177,Poland: A Falling Democracy,13182,The ‘drifting Generation’ without a Helmsman. Main obstacles in shaping the Relations between the Political Parties and the Youth in Poland,article,2015
+177,Poland: A Falling Democracy,13182,Does Generalized (Dis)Trust Travel? Examining the Impact of Cultural Heritage and Destination-Country Environment on Trust of Immigrants,article,2012
+177,Poland: A Falling Democracy,13182,Managing the Energy Transition through Discourse. The Case of Poland,article,2021
+177,Poland: A Falling Democracy,13182,"The Polish Parliament and the Making of Politics through Abortion: Nation, Gender and Democracy in the 1996 Liberalization Amendment Debate",article,2009
+177,Poland: A Falling Democracy,13182,"Inequality, Political Participation, and Democratic Deepening in Poland",article,2005
+177,Poland: A Falling Democracy,13182,The ends of revolution: capitalist de-democratization and nationalist populism in the east of Europe,article,2017
+177,Poland: A Falling Democracy,13182,Conclusion: Party Democracy in Poland and Its Future,book_chapter,2021
+177,Poland: A Falling Democracy,13182,Democracy in Poland: The Post-communist Regime and Its Performance,book_chapter,2021
+177,Poland: A Falling Democracy,13182,"Are the European Union's New Boundaries like the Iron Curtain? 1989, Borders and Freedom of Movement in Poland and Ukraine",article,2009
+177,Poland: A Falling Democracy,13182,"Conversations with a Polish populist: Tracing hidden histories of globalization, class, and dispossession in postsocialism (and beyond)",article,2009
+177,Poland: A Falling Democracy,13182,Digital divide among people with disabilities: Analysis of data from a nationwide study for determinants of Internet use and activities performed online,article,2017
+177,Poland: A Falling Democracy,13182,"Between Apprehension and Support: Social Dialogue, Democracy, and Industrial Restructuring in Central and Eastern Europe",article,2010
 179,"Bad Guys Wear Turbans: Examining 1,000 Years of Islamophobia in the West",1,"""Love Jihad"", ""Forced"" Conversion Narratives, and Interfaith Marriage in the Sikh Diaspora",article,2021
 181,"Sex Ed, Polarized",16457,"Class, Ethnicity and State in the Polarized Metropolis: Putting Wacquant to Work",book,2019
 181,"Sex Ed, Polarized",16457,Gender & utopia in advertising : a critical reader,pbook,1994

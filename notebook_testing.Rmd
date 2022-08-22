@@ -47,13 +47,13 @@ The preview shows you a rendered HTML copy of the contents of the editor. Conseq
 
 ```{r}
 #searchit_titles=read.csv("D:/Rstudio projects/tidy_string_distance/paperTitles_inSearchItYes_Fall2020_oneObsPerRow.csv")
-searchit_titles=read.csv("D:/Rstudio projects/tidy_string_distance/paperTitles_inSearchItYes_Fall2020_noFacets_oneObsPerRow_papernumber.csv")
+searchit_titles=read.csv("D:/Rstudio projects/tidy_string_distance/Fall_2020/Articles_only/paperTitles_inSearchItYes_Fall2020_articlesOnly_oneObsPerRow_paper_numbers.csv")
 matrixsearchit_titles=as.matrix(searchit_titles)
 vectorsearchit_titles=as.vector(searchit_titles)
 
 
 #source_titles=read.csv("D:/Rstudio projects/tidy_string_distance/fall_2020_paper_citations_short.csv")
-source_titles=read.csv("D:/Rstudio projects/tidy_string_distance/fall_2020_paper_citations_01.csv")
+source_titles=read.csv("D:/Rstudio projects/tidy_string_distance/Fall_2020/fall_2020_paper_citations_01.csv")
 matrix_source_title=as.matrix(source_titles)
 vectorpapers_info_test=as.vector(source_titles)
 
@@ -66,9 +66,9 @@ b <- 1
 jaccard <- data.frame(matrix(ncol = 7, nrow = 0))
 colnames(jaccard) <- c("Paper Number","biblography title","Bibliography Type","Query Number","Search It Title","Search It Type","Jaccard Score")
 while (n  < 100   ) {
-#n should be the number of source citations to check (citations from papers, for fall 2020 citation count is 442)
-#b should be the whole number of titles returned from queries to check  (titles returned from discovery layer to compare against. for fall 2020 this is 4275)
-while (b < 4275) {
+#n should be the number of source citations to check (citations from papers, for fall 2020 citation count is 442 -- but for file size the one file has been broken up into 5 files -- 4 at 100 citations a piece and the last with 50)
+#b should be the whole number of titles returned from queries to check  (titles returned from discovery layer to compare against. for fall 2020 this will be different based on the facets and the queries.....)
+while (b < 4273) {
   new_row <-  c(matrix_source_title[i,1],matrix_source_title[i,4],matrix_source_title[i,6],matrixsearchit_titles[b,1],matrixsearchit_titles[b,4],matrixsearchit_titles[b,5],stringdist(tolower(matrix_source_title[i,4]),tolower(matrixsearchit_titles[b,4]), method = "jaccard", q = "7"))
   b = b + 1
   jaccard[nrow(jaccard) + 1,] <- new_row
@@ -84,7 +84,7 @@ while (b < 4275) {
   print(jaccard)
 ```
 ```{r}
-write.csv(jaccard,"D:\\Rstudio projects\\tidy_string_distance\\jaccard_testing_03.csv")
+write.csv(jaccard,"D:\\Rstudio projects\\tidy_string_distance\\jaccard_q7_nofacetsfall_fill_in.csv")
 
 ```
 ```{r}
@@ -94,11 +94,7 @@ jaccard <- stringdist(tolower(matrixpapers_info_test[i,4]),tolower(matrixsearchi
   print(jaccard)
   string_dist_testing_fall_2020 <- data.frame(fuzzy_matches_fall_2020$`Search It Result`,fuzzy_matches_fall_2020$`Citation Source Title`,fuzzy_matches_fall_2020$Similarity,stringdist(tolower(fuzzy_matches_fall_2020$`Search It Result`),tolower(fuzzy_matches_fall_2020$`Citation Source Title`), method = "jw"),stringdist(tolower(fuzzy_matches_fall_2020$`Search It Result`),tolower(fuzzy_matches_fall_2020$`Citation Source Title`), method = "jaccard", q = "10"),stringdist(tolower(fuzzy_matches_fall_2020$`Search It Result`),tolower(fuzzy_matches_fall_2020$`Citation Source Title`), method = "lv"))
   
-  
-  colnames(string_dist_testing_fall_2020) <- c("Search It Title","Citation Title","Fuzzy Match Score","JW Score", "Jaccard Score", "LV Score")
-  print(string_dist_testing_fall_2020) 
-  
-  
+   
   
 
 

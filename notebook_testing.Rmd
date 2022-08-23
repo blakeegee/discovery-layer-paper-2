@@ -84,7 +84,7 @@ while (b < 4273) {
   print(jaccard)
 ```
 ```{r}
-write.csv(jaccard,"D:\\Rstudio projects\\tidy_string_distance\\jaccard_q7_nofacetsfall_fill_in.csv")
+write.csv(jaccard,"D:\\Rstudio projects\\tidy_string_distance\\jaccard_q7_articles_only_fall.csv")
 
 ```
 ```{r}

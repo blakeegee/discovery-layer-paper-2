@@ -47,7 +47,7 @@ The preview shows you a rendered HTML copy of the contents of the editor. Conseq
 
 ```{r}
 #searchit_titles=read.csv("D:/Rstudio projects/tidy_string_distance/paperTitles_inSearchItYes_Fall2020_oneObsPerRow.csv")
-searchit_titles=read.csv("D:/Rstudio projects/tidy_string_distance/Fall_2020/Articles_only/paperTitles_inSearchItYes_Fall2020_articlesOnly_oneObsPerRow_paper_numbers.csv")
+searchit_titles=read.csv("D:/Rstudio projects/tidy_string_distance/Fall_2020/No_ref_no_news/paperTitles_inSearchItYes_Fall2020_noRefnoNewsnoReview_oneObsPerRow_papernumbers.csv")
 matrixsearchit_titles=as.matrix(searchit_titles)
 vectorsearchit_titles=as.vector(searchit_titles)
 
@@ -65,10 +65,10 @@ i <- 1
 b <- 1
 jaccard <- data.frame(matrix(ncol = 7, nrow = 0))
 colnames(jaccard) <- c("Paper Number","biblography title","Bibliography Type","Query Number","Search It Title","Search It Type","Jaccard Score")
-while (n  < 50   ) {
+while (n  < 50  ) {
 #n should be the number of source citations to check (citations from papers, for fall 2020 citation count is 442 -- but for file size the one file has been broken up into 5 files -- 4 at 100 citations a piece and the last with 50)
 #b should be the whole number of titles returned from queries to check  (titles returned from discovery layer to compare against. for fall 2020 this will be different based on the facets and the queries.....)
-while (b < 4273) {
+while (b < 4302) {
   new_row <-  c(matrix_source_title[i,1],matrix_source_title[i,4],matrix_source_title[i,6],matrixsearchit_titles[b,1],matrixsearchit_titles[b,4],matrixsearchit_titles[b,5],stringdist(tolower(matrix_source_title[i,4]),tolower(matrixsearchit_titles[b,4]), method = "jaccard", q = "7"))
   b = b + 1
   jaccard[nrow(jaccard) + 1,] <- new_row
@@ -84,7 +84,7 @@ while (b < 4273) {
   print(jaccard)
 ```
 ```{r}
-write.csv(jaccard,"D:\\Rstudio projects\\tidy_string_distance\\jaccard_q7_articles_only_fall_05.csv")
+write.csv(jaccard,"D:\\Rstudio projects\\tidy_string_distance\\jaccard_q7_no_news_no_eviews_fall_05.csv")
 
 ```
 ```{r}

@@ -47,13 +47,13 @@ The preview shows you a rendered HTML copy of the contents of the editor. Conseq
 
 ```{r}
 #searchit_titles=read.csv("D:/Rstudio projects/tidy_string_distance/paperTitles_inSearchItYes_Fall2020_oneObsPerRow.csv")
-searchit_titles=read.csv("D:/Rstudio projects/tidy_string_distance/Fall_2020/No_ref_no_news/paperTitles_inSearchItYes_Fall2020_noRefnoNewsnoReview_oneObsPerRow_papernumbers.csv")
+searchit_titles=read.csv("D:/Rstudio projects/tidy_string_distance/Spring_2021/no_refs_no_news/paperTitles_inSearchItYes_Spri2021_noRefnoNewsnoReview_oneObsPerRow.csv")
 matrixsearchit_titles=as.matrix(searchit_titles)
 vectorsearchit_titles=as.vector(searchit_titles)
 
 
 #source_titles=read.csv("D:/Rstudio projects/tidy_string_distance/fall_2020_paper_citations_short.csv")
-source_titles=read.csv("D:/Rstudio projects/tidy_string_distance/Fall_2020/fall_2020_paper_citations_05.csv")
+source_titles=read.csv("D:/Rstudio projects/tidy_string_distance/Spring_2021/spring_2021_paper_citations_05.csv")
 matrix_source_title=as.matrix(source_titles)
 vectorpapers_info_test=as.vector(source_titles)
 
@@ -63,15 +63,18 @@ vectorpapers_info_test=as.vector(source_titles)
 n <- 1
 i <- 1
 b <- 1
+jaccard <- 1
 jaccard <- data.frame(matrix(ncol = 7, nrow = 0))
-colnames(jaccard) <- c("Paper Number","biblography title","Bibliography Type","Query Number","Search It Title","Search It Type","Jaccard Score")
-while (n  < 50  ) {
-#n should be the number of source citations to check (citations from papers, for fall 2020 citation count is 442 -- but for file size the one file has been broken up into 5 files -- 4 at 100 citations a piece and the last with 50)
-#b should be the whole number of titles returned from queries to check  (titles returned from discovery layer to compare against. for fall 2020 this will be different based on the facets and the queries.....)
-while (b < 4302) {
-  new_row <-  c(matrix_source_title[i,1],matrix_source_title[i,4],matrix_source_title[i,6],matrixsearchit_titles[b,1],matrixsearchit_titles[b,4],matrixsearchit_titles[b,5],stringdist(tolower(matrix_source_title[i,4]),tolower(matrixsearchit_titles[b,4]), method = "jaccard", q = "7"))
+colnames(jaccard) <- c("Paper title","biblography title","Bibliography Type","Query","Search It Title","Search It Type","Jaccard Score")
+while (n  < 69  ) {
+#n should be the number of source citations to check (citations from papers, for spring 21 citation count is 463 -- but for file size the one file has been broken up into 5 files -- 4 with < 100 citations a piece and the last with the rest)
+#b should be the whole number of titles returned from queries to check  (titles returned from discovery layer to compare against. for spring 2021 this will be different based on the facets and the queries.....)
+while (b < 4546) {
+  
+    new_row <-  c(matrix_source_title[i,2],matrix_source_title[i,4],matrix_source_title[i,6],matrixsearchit_titles[b,1],matrixsearchit_titles[b,3],matrixsearchit_titles[b,4],stringdist(tolower(matrix_source_title[i,4]),tolower(matrixsearchit_titles[b,3]), method = "jaccard", q = "7"))
   b = b + 1
   jaccard[nrow(jaccard) + 1,] <- new_row
+   
  }
   i = i +1
   n <- i
@@ -84,7 +87,7 @@ while (b < 4302) {
   print(jaccard)
 ```
 ```{r}
-write.csv(jaccard,"D:\\Rstudio projects\\tidy_string_distance\\jaccard_q7_no_news_no_eviews_fall_05.csv")
+write.csv(jaccard,"D:\\Rstudio projects\\tidy_string_distance\\jaccard_q7_no_refs_no_news_spring21_05.csv")
 
 ```
 ```{r}

@@ -46,14 +46,14 @@ When you save the notebook, an HTML file containing the code and output will be 
 The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
 
 ```{r}
-#searchit_titles=read.csv("D:/Rstudio projects/tidy_string_distance/paperTitles_inSearchItYes_Fall2020_oneObsPerRow.csv")
-searchit_titles=read.csv("D:/Rstudio projects/tidy_string_distance/Spring_2021/no_refs_no_news/paperTitles_inSearchItYes_Spri2021_noRefnoNewsnoReview_oneObsPerRow.csv")
+#searchit_titles=read.csv("D:/Rstudio projects/tidy_string_distance/Fall_2020/Articles_only/paperTitles_inSearchItYes_Fall2020_articlesOnly_oneObsPerRow.csv")
+searchit_titles=read.csv("D:/Rstudio projects/tidy_string_distance/Spring_2021/articles_only/paperTitles_inSearchItYes_Spri2021_articlesOnly_oneObsPerRow.csv")
 matrixsearchit_titles=as.matrix(searchit_titles)
 vectorsearchit_titles=as.vector(searchit_titles)
 
 
-#source_titles=read.csv("D:/Rstudio projects/tidy_string_distance/fall_2020_paper_citations_short.csv")
-source_titles=read.csv("D:/Rstudio projects/tidy_string_distance/Spring_2021/spring_2021_paper_citations_05.csv")
+#source_titles=read.csv("D:/Rstudio projects/tidy_string_distance//Fall_2020/fall_2020_paper_citations_02.csv")
+source_titles=read.csv("D:/Rstudio projects/tidy_string_distance/Spring_2021/spring_2021_paper_citations_01.csv")
 matrix_source_title=as.matrix(source_titles)
 vectorpapers_info_test=as.vector(source_titles)
 
@@ -66,10 +66,10 @@ b <- 1
 jaccard <- 1
 jaccard <- data.frame(matrix(ncol = 7, nrow = 0))
 colnames(jaccard) <- c("Paper title","biblography title","Bibliography Type","Query","Search It Title","Search It Type","Jaccard Score")
-while (n  < 69  ) {
+while (n  < 10  ) {
 #n should be the number of source citations to check (citations from papers, for spring 21 citation count is 463 -- but for file size the one file has been broken up into 5 files -- 4 with < 100 citations a piece and the last with the rest)
 #b should be the whole number of titles returned from queries to check  (titles returned from discovery layer to compare against. for spring 2021 this will be different based on the facets and the queries.....)
-while (b < 4546) {
+while (b < 4445) {
   
     new_row <-  c(matrix_source_title[i,2],matrix_source_title[i,4],matrix_source_title[i,6],matrixsearchit_titles[b,1],matrixsearchit_titles[b,3],matrixsearchit_titles[b,4],stringdist(tolower(matrix_source_title[i,4]),tolower(matrixsearchit_titles[b,3]), method = "jaccard", q = "7"))
   b = b + 1
@@ -85,9 +85,11 @@ while (b < 4546) {
 ```
 ```{r}
   print(jaccard)
+trimmed_jaccard <- as_tibble(jaccard) %>% filter(jaccard$`Jaccard Score` < "0.89945205479452")
+  print(trimmed_jaccard)
 ```
 ```{r}
-write.csv(jaccard,"D:\\Rstudio projects\\tidy_string_distance\\jaccard_q7_no_refs_no_news_spring21_05.csv")
+write.csv(jaccard,"D:\\Rstudio projects\\tidy_string_distance\\jaccard_q7_articles_only_spring21_again_01.csv")
 
 ```
 ```{r}

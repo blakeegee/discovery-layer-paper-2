@@ -46,18 +46,19 @@ When you save the notebook, an HTML file containing the code and output will be 
 The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
 
 ```{r}
-#searchit_titles=read.csv("D:/Rstudio projects/tidy_string_distance/Fall_2020/Articles_only/paperTitles_inSearchItYes_Fall2020_articlesOnly_oneObsPerRow.csv")
-searchit_titles=read.csv("D:/Rstudio projects/tidy_string_distance/Spring_2021/articles_only/paperTitles_inSearchItYes_Spri2021_articlesOnly_oneObsPerRow.csv")
+searchit_titles=read.csv("D:/Rstudio projects/tidy_string_distance/Fall_2020/Articles_only/paperTitles-inSearchItYes-Fall2020-articlesOnly-oneObsPerRow-paper-numbers-refine-csv.csv")
+#searchit_titles=read.csv("D:/Rstudio projects/tidy_string_distance/Spring_2021/articles_only/paperTitles_inSearchItYes_Spri2021_articlesOnly_oneObsPerRow.csv")
 matrixsearchit_titles=as.matrix(searchit_titles)
 vectorsearchit_titles=as.vector(searchit_titles)
 
 
-#source_titles=read.csv("D:/Rstudio projects/tidy_string_distance//Fall_2020/fall_2020_paper_citations_02.csv")
-source_titles=read.csv("D:/Rstudio projects/tidy_string_distance/Spring_2021/spring_2021_paper_citations_01.csv")
+source_titles=read.csv("D:/Rstudio projects/tidy_string_distance/Fall_2020/fall-2020-paper-citations-refine-csv.csv")
+#source_titles=read.csv("D:/Rstudio projects/tidy_string_distance/Spring_2021/spring_2021_paper_citations_01.csv")
 matrix_source_title=as.matrix(source_titles)
 vectorpapers_info_test=as.vector(source_titles)
 
 ```
+
 ```{r}
 
 n <- 1
@@ -66,12 +67,12 @@ b <- 1
 jaccard <- 1
 jaccard <- data.frame(matrix(ncol = 7, nrow = 0))
 colnames(jaccard) <- c("Paper title","Biblography title","Bibliography Type","Query","Search It Title","Search It Type","Jaccard Score")
-while (n  < 2  ) {
+while (n  < 443  ) {443
 #n should be the number of source citations to check (citations from papers, for spring 21 citation count is 463 -- but for file size the one file has been broken up into 5 files -- 4 with < 100 citations a piece and the last with the rest)
-#b should be the whole number of titles returned from queries to check  (titles returned from discovery layer to compare against. for spring 2021 this will be different based on the facets and the queries.....)
-while (b < 4445) {
+#b should be the whole number of titles returned from queries to check  (titles returned from discovery layer to compare against. for spring 2021 this will be different based on the facets and the queries....4273.)
+while (b < 4273) {
   
-    new_row <-  c(matrix_source_title[i,2],matrix_source_title[i,4],matrix_source_title[i,6],matrixsearchit_titles[b,1],matrixsearchit_titles[b,3],matrixsearchit_titles[b,4],stringdist(tolower(matrix_source_title[i,4]),tolower(matrixsearchit_titles[b,3]), method = "jaccard", q = "7"))
+    new_row <-  c(matrix_source_title[i,2],matrix_source_title[i,4],matrix_source_title[i,6],matrixsearchit_titles[b,2],matrixsearchit_titles[b,4],matrixsearchit_titles[b,5],stringdist(tolower(matrix_source_title[i,4]),tolower(matrixsearchit_titles[b,4]), method = "jaccard", q = "7"))
   b = b + 1
   jaccard[nrow(jaccard) + 1,] <- new_row
    
@@ -83,15 +84,19 @@ while (b < 4445) {
   
 }
 ```
+
 ```{r}
-  print(jaccard)
+  
 trimmed_jaccard <- as_tibble(jaccard) %>% filter(jaccard$`Jaccard Score` < "0.89945205479452")
-  print(trimmed_jaccard)
+  view(trimmed_jaccard)
+
 ```
+
 ```{r}
 write.csv(jaccard,"D:\\Rstudio projects\\tidy_string_distance\\jaccard_q7_articles_only_spring21_again_01.csv")
 
 ```
+
 ```{r}
   print(matrixsearchit_titles[b,3])
   print(matrixpapers_info_test[i,4])
@@ -104,6 +109,7 @@ jaccard <- stringdist(tolower(matrixpapers_info_test[i,4]),tolower(matrixsearchi
 
 
 ```
+
 ```{r}
 final_testing.tb <-tibble(Searchit_title = character(),s_type = character(),paper_title = character(), paper_type = character(), Jaccard = double())
 final_testing.tb <- c(final_testing.tb,title_bib_testing_matrix[1,4],title_bib_testing_matrix[1,5],Spring2021_oneObsPerRow_matrix[1,3],Spring2021_oneObsPerRow_matrix[1,4],stringdist(title_bib_testing_matrix[1,4],Spring2021_oneObsPerRow_matrix[1,3], method = "jaccard"))
@@ -115,7 +121,9 @@ final_testing.tb <- tibble(final_testing.tb,title_bib_testing_matrix[i,4],title_
 print(final_testing)
 
 ```
+
 testing here for the thoroughly cleaned titles (all in one sheet --- checking the different methods-- jaccard,lv,etcc...only against our QA jaccard plus... )
+
 ```{r}
 #searchit_titles=read.csv("D:/Rstudio projects/tidy_string_distance/Fall_2020/Articles_only/paperTitles_inSearchItYes_Fall2020_articlesOnly_oneObsPerRow.csv")
 searchit_titles=read.csv("D:/Rstudio projects/tidy_string_distance/Spring_2021/articles_only/paperTitles_inSearchItYes_Spri2021_articlesOnly_oneObsPerRow.csv")
@@ -129,9 +137,10 @@ matrix_source_title=as.matrix(source_titles)
 vectorpapers_info_test=as.vector(source_titles)
 
 ```
+
 ```{r}
 
-combined_titles=read.csv("D:/Rstudio projects/tidy_string_distance/jaccard_q7_nofacetsfall_all_string_cleaned_testing.csv")
+combined_titles=read.csv("D:/Rstudio projects/tidy_string_distance/Spring_2021/master_jaccard_q7_no_refs_no_news_spring21.csv")
 matrix_combined=as.matrix(combined_titles)
 
 ```
@@ -143,29 +152,33 @@ i <- 1
 b <- 1
 jaccard_2 <- 1
 jaccard_2 <- data.frame(matrix(ncol = 12, nrow = 0))
-colnames(jaccard_2) <- c("Paper title","Biblography title","Bibliography Type","Query","Search It Title","Search It Type","Jaccard Score","PaperNumMatch","QA_Match","JAccard 2","LV","JW")
+colnames(jaccard_2) <- c("Paper title","Bibliography title","Bibliography Type","Query","Search It Title","Search It Type","Jaccard Score","PaperNumMatch","QA_Match","Jaccard 2","LV","JW")
 
 #n should be the number of source citations to check (citations from papers, for spring 21 citation count is 463 -- but for file size the one file has been broken up into 5 files -- 4 with < 100 citations a piece and the last with the rest)
 #b should be the whole number of titles returned from queries to check  (titles returned from discovery layer to compare against. for spring 2021 this will be different based on the facets and the queries.....)
 
-while (b < 10) {
+while (b < 31) {
   
-    new_row <-  c(matrix_combined[i,1],matrix_combined[i,2],matrix_combined[i,3],matrix_combined[i,4],matrix_combined[i,5],matrix_combined[i,6],matrix_combined[i,7],matrix_combined[i,8],matrix_combined[i,9],stringdist(tolower(matrix_combined[i,4]),tolower(matrix_combined[i,3]), method = "jaccard", q = "7"),stringdist(tolower(matrix_combined[i,2]),tolower(matrix_combined[i,5]), method ="lv"),stringdist(tolower(matrix_combined[i,2]),tolower(matrix_combined[i,5]), method = "jw"))
+    new_row <-  c(matrix_combined[i,1],matrix_combined[i,2],matrix_combined[i,3],matrix_combined[i,4],matrix_combined[i,5],matrix_combined[i,6],matrix_combined[i,7],matrix_combined[i,8],matrix_combined[i,9],stringdist(tolower(matrix_combined[i,2]),tolower(matrix_combined[i,5]), method = "jaccard", q = "7"),stringdist(tolower(matrix_combined[i,2]),tolower(matrix_combined[i,5]), method ="lv"),stringdist(tolower(matrix_combined[i,2]),tolower(matrix_combined[i,5]), method = "jw"))
   b = b + 1
   jaccard_2[nrow(jaccard_2) + 1,] <- new_row
-   
+   i = i +1
  }
-  i = i +1
+  
  
 
   
   
 
 ```
+
 ```{r}
-  print(jaccard)
-trimmed_jaccard <- as_tibble(jaccard) %>% filter(jaccard$`Jaccard Score` < "0.89945205479452")
-  print(trimmed_jaccard)
+write.csv(jaccard_2,"D:\\Rstudio projects\\tidy_string_distance\\spring_no_news_refs_nreviews_QAcomparison.csv")
+
 ```
 
-
+```{r}
+  print(jaccard_2)
+trimmed_jaccard_2 <- as_tibble(jaccard_2) %>% filter(jaccard_2$`JW` < "0.382539682539683")
+  print(trimmed_jaccard_2)
+```

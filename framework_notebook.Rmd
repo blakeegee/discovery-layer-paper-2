@@ -1,0 +1,60 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Ctrl+Shift+Enter*. 
+
+
+```{r}
+#searchit_titles=read.csv("D:/Rstudio projects/tidy_string_distance/Fall_2020/No_ref_no_news/paperTitles-inSearchItYes-Fall2020-noRefnoNewsnoReview-oneObsPerRow-papernumbers-csv.csv")
+searchit_titles=read.csv("D:/Rstudio projects/tidy_string_distance/Spring_2021/books_only/paperTitles-inSearchItYes-Spri2021-booksOnly-oneObsPerRow-csv.csv")
+matrixsearchit_titles=as.matrix(searchit_titles)
+vectorsearchit_titles=as.vector(searchit_titles)
+
+
+#source_titles=read.csv("D:/Rstudio projects/tidy_string_distance/Fall_2020/fall-2020-paper-citations-refine-csv.csv")
+source_titles=read.csv("D:/Rstudio projects/tidy_string_distance/Spring_2021/spring-2021-paper-citations-csv.csv")
+matrix_source_title=as.matrix(source_titles)
+vectorpapers_info_test=as.vector(source_titles)
+
+```
+
+
+
+
+```{r}
+n <- 1
+i <- 1
+b <- 1
+jaccard <- 1
+jaccard <- data.frame(matrix(ncol = 9, nrow = 0))
+colnames(jaccard) <- c("Paper title","Biblography title","Bibliography Type","Query","Search It Title","Search It Type","Jaccard Score", "JW","LV")
+while (n  < 464  ) {
+#n should be the number of source citations to check (citations from papers, for spring 21 citation count is 463 -- but for file size the one file has been broken up into 5 files -- 4 with < 100 citations a piece and the last with the rest)
+#b should be the whole number of titles returned from queries to check  (titles returned from discovery layer to compare against. for spring 2021 this will be different based on the facets and the queries....4273.)
+while (b < 4129) {
+  
+  if(matrix_source_title[i,2] == matrixsearchit_titles[b,1])
+    {new_row <-  c(matrix_source_title[i,2],matrix_source_title[i,4],matrix_source_title[i,6],matrixsearchit_titles[b,1],matrixsearchit_titles[b,3],matrixsearchit_titles[b,5],stringdist(tolower(matrix_source_title[i,4]),tolower(matrixsearchit_titles[b,3]), method = "jaccard", q = "7"),stringdist(tolower(matrix_source_title[i,4]),tolower(matrixsearchit_titles[b,3]), method = "jw"),stringdist(tolower(matrix_source_title[i,4]),tolower(matrixsearchit_titles[b,3]), method = "lv"))
+    b = b + 1
+  jaccard[nrow(jaccard) + 1,] <- new_row
+  }
+  else {b = b+1}
+   
+ }
+  i = i +1
+  n <- i
+  b <- 1
+  
+  
+}
+```
+
+Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Ctrl+Alt+I*.
+
+When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Ctrl+Shift+K* to preview the HTML file).
+
+The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.

@@ -9,16 +9,16 @@ Try executing this chunk by clicking the *Run* button within the chunk or by pla
 
 
 ```{r}
-#searchit_titles=read.csv("D:/Rstudio projects/tidy_string_distance/Fall_2020/No_ref_no_news/paperTitles-inSearchItYes-Fall2020-noRefnoNewsnoReview-oneObsPerRow-papernumbers-csv.csv")
-searchit_titles=read.csv("D:/Rstudio projects/tidy_string_distance/Spring_2021/books_only/paperTitles-inSearchItYes-Spri2021-booksOnly-oneObsPerRow-csv.csv")
+#searchit_titles=read.csv("D:/Rstudio projects/tidy_string_distance/Fall_2020/Normalized/papertitles-searchit-fall2020-articlesonly-oneobsperrow.csv")
+searchit_titles=read.csv("D:/Rstudio projects/tidy_string_distance/Spring_2021/Normalized/paperTitles-inSearchItYes-Spri2021-noRefnoNewsnoReview-oneObsPerRow-normalized.csv")
 matrixsearchit_titles=as.matrix(searchit_titles)
-vectorsearchit_titles=as.vector(searchit_titles)
+#vectorsearchit_titles=as.vector(searchit_titles)
 
 
-#source_titles=read.csv("D:/Rstudio projects/tidy_string_distance/Fall_2020/fall-2020-paper-citations-refine-csv.csv")
-source_titles=read.csv("D:/Rstudio projects/tidy_string_distance/Spring_2021/spring-2021-paper-citations-csv.csv")
+#source_titles=read.csv("D:/Rstudio projects/tidy_string_distance/Fall_2020/Normalized/fall-2020-paper-citations.csv")
+source_titles=read.csv("D:/Rstudio projects/tidy_string_distance/Spring_2021/Normalized/spring-2021-paper-citations-normalized.csv")
 matrix_source_title=as.matrix(source_titles)
-vectorpapers_info_test=as.vector(source_titles)
+#vectorpapers_info_test=as.vector(source_titles)
 
 ```
 
@@ -29,18 +29,18 @@ vectorpapers_info_test=as.vector(source_titles)
 n <- 1
 i <- 1
 b <- 1
-jaccard <- 1
-jaccard <- data.frame(matrix(ncol = 9, nrow = 0))
-colnames(jaccard) <- c("Paper title","Biblography title","Bibliography Type","Query","Search It Title","Search It Type","Jaccard Score", "JW","LV")
+matches <- 1
+matches <- data.frame(matrix(ncol = 9, nrow = 0))
+colnames(matches) <- c("Paper title","Biblography title","Bibliography Type","Query","Search It Title","Search It Type","Jaccard Score", "JW","LV")
 while (n  < 464  ) {
-#n should be the number of source citations to check (citations from papers, for spring 21 citation count is 463 -- but for file size the one file has been broken up into 5 files -- 4 with < 100 citations a piece and the last with the rest)
+#n should be the number of source citations to check (citations from papers, for spring 21 citation count is 463) 
 #b should be the whole number of titles returned from queries to check  (titles returned from discovery layer to compare against. for spring 2021 this will be different based on the facets and the queries....4273.)
-while (b < 4129) {
-  
+while (b < 4546) {
+ #the column placement of the paper title/query in matrixsearchit_titles changes depending on the semester files being run fall2020 it is  matrixsearchit_titles[b,2] spring 2021 it is  matrixsearchit_titles[b,1] .. also means we need to slide the stringdist comparators down one from tolower(matrixsearchit_titles[b,4] to tolower(matrixsearchit_titles[b,3]
   if(matrix_source_title[i,2] == matrixsearchit_titles[b,1])
-    {new_row <-  c(matrix_source_title[i,2],matrix_source_title[i,4],matrix_source_title[i,6],matrixsearchit_titles[b,1],matrixsearchit_titles[b,3],matrixsearchit_titles[b,5],stringdist(tolower(matrix_source_title[i,4]),tolower(matrixsearchit_titles[b,3]), method = "jaccard", q = "7"),stringdist(tolower(matrix_source_title[i,4]),tolower(matrixsearchit_titles[b,3]), method = "jw"),stringdist(tolower(matrix_source_title[i,4]),tolower(matrixsearchit_titles[b,3]), method = "lv"))
+    {new_row <-  c(matrix_source_title[i,2],matrix_source_title[i,4],matrix_source_title[i,6],matrixsearchit_titles[b,1],matrixsearchit_titles[b,3],matrixsearchit_titles[b,4],stringdist(tolower(matrix_source_title[i,4]),tolower(matrixsearchit_titles[b,3]), method = "jaccard", q = "7"),stringdist(tolower(matrix_source_title[i,4]),tolower(matrixsearchit_titles[b,3]), method = "jw"),stringdist(tolower(matrix_source_title[i,4]),tolower(matrixsearchit_titles[b,3]), method = "jw", p ="0"))
     b = b + 1
-  jaccard[nrow(jaccard) + 1,] <- new_row
+  matches[nrow(matches) + 1,] <- new_row
   }
   else {b = b+1}
    
@@ -51,6 +51,12 @@ while (b < 4129) {
   
   
 }
+```
+```{r}
+
+#write.csv(jaccard,"D:\\Rstudio projects\\tidy_string_distance\\fall2020_nonews_norefs_neweval.csv")
+write.csv(matches,"D:\\Rstudio projects\\tidy_string_distance\\Spring_2021\\Normalized\\Spring2021_noNewsnoRefsnoReviews_normalized_JW2_matches.csv")
+
 ```
 
 Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Ctrl+Alt+I*.

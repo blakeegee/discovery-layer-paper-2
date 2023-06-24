@@ -1,5 +1,5 @@
 ---
-title: "R Notebook"
+title: "String Matching Routine to evaluate matching strings across unequal matrices/dataframes"
 output: html_notebook
 ---
 
@@ -9,16 +9,15 @@ Try executing this chunk by clicking the *Run* button within the chunk or by pla
 
 
 ```{r}
-#searchit_titles=read.csv("D:/Rstudio projects/tidy_string_distance/Fall_2020/Normalized/papertitles-searchit-fall2020-articlesonly-oneobsperrow.csv")
+
+#Loads and reads the .CSV from the Primo API calls that have been split into one observation per row into a dataframe and then expressed as a matrix
 searchit_titles=read.csv("D:/Rstudio projects/tidy_string_distance/Spring_2021/Normalized/paperTitles-inSearchItYes-Spri2021-noRefnoNewsnoReview-oneObsPerRow-normalized.csv")
 matrixsearchit_titles=as.matrix(searchit_titles)
-#vectorsearchit_titles=as.vector(searchit_titles)
 
-
-#source_titles=read.csv("D:/Rstudio projects/tidy_string_distance/Fall_2020/Normalized/fall-2020-paper-citations.csv")
+#loads and reads the .csv of the source citation lists by semester into a dataframe and then expressed as a matrix
 source_titles=read.csv("D:/Rstudio projects/tidy_string_distance/Spring_2021/Normalized/spring-2021-paper-citations-normalized.csv")
 matrix_source_title=as.matrix(source_titles)
-#vectorpapers_info_test=as.vector(source_titles)
+
 
 ```
 
@@ -26,18 +25,23 @@ matrix_source_title=as.matrix(source_titles)
 
 
 ```{r}
+#There are certainly other ways to step through the two uneven matrices and compare the data across columns.  As often happens,  once this worked, it didn't seem necessary to spend more time trying to refine the method of stepping though the matrices
 n <- 1
 i <- 1
 b <- 1
 matches <- 1
+#setting beginning values
+#creating a dataframe/matrix of nine columns with named columns in the header
 matches <- data.frame(matrix(ncol = 9, nrow = 0))
 colnames(matches) <- c("Paper title","Biblography title","Bibliography Type","Query","Search It Title","Search It Type","Jaccard Score", "JW","LV")
+
 while (n  < 464  ) {
-#n should be the number of source citations to check (citations from papers, for spring 21 citation count is 463) 
-#b should be the whole number of titles returned from queries to check  (titles returned from discovery layer to compare against. for spring 2021 this will be different based on the facets and the queries....4273.)
+#n is the number of source citations to check (source citations from papers, for spring 21 citation count is 463) 
+#b is the whole number of titles returned from queries to check  (titles returned from discovery layer to compare against. for spring 2021 this will be different based on the facets and the queries....4273.)
 while (b < 4546) {
- #the column placement of the paper title/query in matrixsearchit_titles changes depending on the semester files being run fall2020 it is  matrixsearchit_titles[b,2] spring 2021 it is  matrixsearchit_titles[b,1] .. also means we need to slide the stringdist comparators down one from tolower(matrixsearchit_titles[b,4] to tolower(matrixsearchit_titles[b,3]
-  if(matrix_source_title[i,2] == matrixsearchit_titles[b,1])
+ #the column placement of the paper title/query in matrixsearchit_titles changed depending on the semester files being run fall2020 it is  matrixsearchit_titles[b,2] spring 2021 it is  matrixsearchit_titles[b,1] .. also means we need to slide the stringdist comparators down one from tolower(matrixsearchit_titles[b,4] to tolower(matrixsearchit_titles[b,3]
+  if(matrix_source_title[i,2] == matrixsearchit_titles[b,1])  
+    #this statement ensures we are only running a match process on titles that are germane ==  these two cells represent the Paper/Query match point.
     {new_row <-  c(matrix_source_title[i,2],matrix_source_title[i,4],matrix_source_title[i,6],matrixsearchit_titles[b,1],matrixsearchit_titles[b,3],matrixsearchit_titles[b,4],stringdist(tolower(matrix_source_title[i,4]),tolower(matrixsearchit_titles[b,3]), method = "jaccard", q = "7"),stringdist(tolower(matrix_source_title[i,4]),tolower(matrixsearchit_titles[b,3]), method = "jw"),stringdist(tolower(matrix_source_title[i,4]),tolower(matrixsearchit_titles[b,3]), method = "jw", p ="0"))
     b = b + 1
   matches[nrow(matches) + 1,] <- new_row
@@ -54,13 +58,8 @@ while (b < 4546) {
 ```
 ```{r}
 
-#write.csv(jaccard,"D:\\Rstudio projects\\tidy_string_distance\\fall2020_nonews_norefs_neweval.csv")
+#Witing the resultant matches dataframe into a .csv
 write.csv(matches,"D:\\Rstudio projects\\tidy_string_distance\\Spring_2021\\Normalized\\Spring2021_noNewsnoRefsnoReviews_normalized_JW2_matches.csv")
 
 ```
 
-Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Ctrl+Alt+I*.
-
-When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Ctrl+Shift+K* to preview the HTML file).
-
-The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
